@@ -1,0 +1,29 @@
+.header-order {
+  background: #fc820a;
+  padding-bottom: 60px;
+  position: relative;
+
+  &__status-bar {
+   position: absolute;
+   right: 0;
+
+    img {
+      padding-right: 10px;
+    }
+
+    span {
+      color: #27272a;
+      font-size: 13px;
+      line-height: 15px;
+      padding-right: 8px;
+    }
+  }
+
+  &__title {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 24px;
+    transform: translate(16px, 35px);
+  }
+}

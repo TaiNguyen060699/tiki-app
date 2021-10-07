@@ -1,0 +1,41 @@
+.flash-sale-book {
+  background: #fcf4dd;
+  padding-top: 16px;
+
+  &__time {
+    padding: 16px 25px 20px;
+
+    span {
+      color: #808089;
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 20px;
+      padding-right: 53px;
+      text-align: center;
+    }
+
+    .active {
+      font-weight: bold;
+      color: orange;
+      text-decoration-line: underline;
+    }
+  }
+
+  &__content {
+    display: flex;
+    padding-right: 8px;
+
+    img {
+      max-width: 188px;
+    }
+
+    &-title {
+      font-size: 12px;
+      padding-left: 8px;
+    }
+  }
+
+  .slick-dots {
+    display: none !important;
+  }
+}

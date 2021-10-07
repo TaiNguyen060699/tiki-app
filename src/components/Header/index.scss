@@ -1,0 +1,23 @@
+.header {
+  position: relative;
+  background: #C7E9F9 ;
+  padding-bottom: 56px;
+  min-width: 360px;
+
+  &__status-bar {
+   position: absolute;
+   right: 0;
+
+    img {
+      padding-right: 10px;
+    }
+
+    span {
+      color: #27272A;
+      font-size: 13px;
+      line-height: 15px;
+      padding-right: 8px;
+    }
+  }
+}
+  
