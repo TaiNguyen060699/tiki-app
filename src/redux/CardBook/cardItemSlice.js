@@ -1,10 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { toast } from "react-toastify";
 
 const initialState = {
   quantity: 1,
-  Carts: [],
+  cardItems: [],
   _products: [],
- 
 }
 
 export const cartItemsSlice = createSlice({
@@ -12,31 +12,41 @@ export const cartItemsSlice = createSlice({
   initialState,
   reducers: {
     addItem: (state, action) => {
-      const newItem = action.payload;
-      const id = action.payload.id;
-  
-      let card = {
-        id: newItem.id,
-        quantity: 1,
-        name: newItem.name,
-        image: newItem.image,
-        price: newItem.price,
-        original_price: newItem.original_price,
-        thumbnail_url: newItem.thumbnail_url
+      const itemIndex = state.cardItems.findIndex((item) => item.id === action.payload.id)
+
+      if (itemIndex >= 0) {
+        state.cardItems[itemIndex].cartQuantity += 1
+        toast.info("Increased product quantity", {
+          position: "bottom-left",
+        });
+      } else {
+        const tempProduct = { ...action.payload, cartQuantity: 1 }
+        state.cardItems.push(tempProduct)
+        toast.success("Product added to cart", {
+          position: "bottom-left",
+        });
       }
-      state.Carts.push(card)
     },
     removeItem: (state, action) => {
       const item = action.payload;
-      state.Carts = state.Carts.filter(e => e.id !== item.id)
+      state.cardItems = state.cardItems.filter(e => e.id !== item.id)
     },
 
-    INCREASE_QUANTITY: (state) => {
-      state.quantity -= 1
-    },
+    DECREASE_QUANTITY: (state, action) => {
+      const itemIndex = state.cardItems.findIndex(cardItems => cardItems.id === action.payload.id)
 
-    DECREASE_QUANTITY: (state) => {
-      state.quantity += 1
+      if (state.cardItems[itemIndex].cartQuantity > 1) {
+        state.cardItems[itemIndex].cartQuantity -= 1;
+        toast.info("Decreased product quantity", {
+          position: "bottom-left",
+        });
+      } else if (state.cardItems[itemIndex].cartQuantity === 1) {
+        const nextCardItems = state.cardItems.filter((item) => item.id !== action.payload.id)
+        state.cardItems = nextCardItems;
+        toast.error("Product removed from cart", {
+          position: "bottom-left",
+        });
+      }
     }
   },
 })

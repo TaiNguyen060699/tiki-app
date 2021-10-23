@@ -5,7 +5,7 @@ import Tiki from "../../assets/images/card-item/tiki.png";
 import Star from "../../assets/images/card-item/star.svg";
 import Vector from "../../assets/images/card-item/vector.svg";
 import { addItem } from "../../redux/CardBook/cardItemSlice";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 
 const UniqueSaleBook = () => {
   return (
@@ -51,7 +51,7 @@ const BookItem = () => {
   return (
     <>
       {UniqueBook.map((item) => (
-        <div className="book-item" key={item.id} onClick={() => dispatch(addItem(item))}>
+        <div className="book-item" key={item.id}>
           <div className="book-item__header">
             <img src={item.thumbnail_url} alt="book-item" />
           </div>
@@ -61,7 +61,7 @@ const BookItem = () => {
               className="book-item__text"
               href={`https://tiki.vn/${item.url_path}`}
             >
-             {item.name}
+              {item.name}
             </a>
             <div className="book-item__vector">
               <img src={Star} alt="star" />
@@ -83,6 +83,12 @@ const BookItem = () => {
               {item.original_price.toLocaleString("it-IT")} ₫
             </div>
           </div>
+          <button
+            className="book-item__button"
+            onClick={() => dispatch(addItem(item))}
+          >
+            Add to Cart
+          </button>
         </div>
       ))}
     </>

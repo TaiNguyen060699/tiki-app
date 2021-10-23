@@ -17,6 +17,8 @@
   }
 
   .book-item {
+    display: flex;
+    flex-direction: column;
     background-color: #ffffff;
     border-radius: 4px;
     margin-bottom: 8px;
@@ -76,6 +78,14 @@
       font-size: 12px;
       line-height: 16px;
       text-decoration-line: line-through;
+    }
+
+    &__button {
+      margin-top: auto;
+      border: none;
+      border-radius: 25px;
+      background-color: #FF424F;
+      cursor: pointer;
     }
   }
 }
