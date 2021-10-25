@@ -2,9 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import { toast } from "react-toastify";
 
 const initialState = {
-  quantity: 1,
   cardItems: [],
-  _products: [],
+  cartTotalQuantity: 0,
+  cartTotalAmount: 0,
 }
 
 export const cartItemsSlice = createSlice({
@@ -47,11 +47,30 @@ export const cartItemsSlice = createSlice({
           position: "bottom-left",
         });
       }
+    },
+    getTotals: (state, action) => {
+      let { total, quantity } = state.cardItems.reduce(
+        (cartTotal, cartItem) => {
+          const { price, cartQuantity } = cartItem;
+          const itemTotal = price * cartQuantity;
+          cartTotal.total += itemTotal;
+          cartTotal.quantity += cartQuantity;
+
+          return cartTotal
+        },
+        {
+          total: 0,
+          cartQuantity: 0
+        }
+      );
+      total = parseFloat(total.toFixed(2));
+      state.cartTotalQuantity = quantity;
+      state.cartTotalAmount = total;
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { addItem, removeItem, INCREASE_QUANTITY, DECREASE_QUANTITY } = cartItemsSlice.actions
+export const { addItem, removeItem, INCREASE_QUANTITY, DECREASE_QUANTITY, getTotals } = cartItemsSlice.actions
 
 export default cartItemsSlice.reducer

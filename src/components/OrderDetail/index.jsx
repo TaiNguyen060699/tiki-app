@@ -1,4 +1,3 @@
-import React from "react";
 import "./index.scss";
 import ImageIcon from "../../assets/images/i.svg";
 import IconDelete from "../../assets/images/order/delete.svg";
@@ -14,9 +13,17 @@ const OrderDetail = () => {
   const dispatch = useDispatch();
   let sum = 0;
   const transport = 15000;
-  const sumPrice = bookItem.map((item) => (sum += item.price));
+  const sumPrice = bookItem.map(
+    (item) => (sum += item.price * item.cartQuantity)
+  );
+
+  console.log(sumPrice)
+  
   const sumb = sum + transport;
-  console.log(sumPrice);
+
+  const handlePayment = () => {
+    alert("Payment success");
+  };
 
   return (
     <main>
@@ -95,7 +102,7 @@ const OrderDetail = () => {
             <span>Tổng cộng</span>
             <span>{sumb.toLocaleString("it-IT")} ₫</span>
           </div>
-          <button>Thanh toán</button>
+          <button onClick={handlePayment}>Thanh toán</button>
         </div>
       </section>
     </main>
