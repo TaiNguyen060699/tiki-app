@@ -33,11 +33,11 @@ const Banner = () => {
   };
 
   return (
-    <section className="homepage__banner-block">
+    <section className="homepage-banner-block">
       <Slider {...settings}>
         {banners.map((banner) => (
-          <div className="homepage__banner-block__list" key={banner.id}>
-            <div className="homepage__banner-block__list-title">
+          <div className="homepage-banner-block__list" key={banner.id}>
+            <div className="homepage-banner-block__list-title">
               <Link
                 to={{ pathname: banner.url }}
                 target="_blank"
@@ -46,7 +46,7 @@ const Banner = () => {
               </Link>
             </div>
             <img
-              className="homepage__banner-block__list-image"
+              className="homepage-banner-block__list-image"
               src={banner.image_url}
               alt="banner"
             />
