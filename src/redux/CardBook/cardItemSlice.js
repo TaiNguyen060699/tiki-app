@@ -15,16 +15,13 @@ export const cartItemsSlice = createSlice({
       const itemIndex = state.cardItems.findIndex((item) => item.id === action.payload.id)
 
       if (itemIndex >= 0) {
+        console.log('1');
         state.cardItems[itemIndex].cartQuantity += 1
-        toast.info("Increased product quantity", {
-          position: "bottom-left",
-        });
       } else {
+
+        console.log("-1")
         const tempProduct = { ...action.payload, cartQuantity: 1 }
         state.cardItems.push(tempProduct)
-        toast.success("Product added to cart", {
-          position: "bottom-left",
-        });
       }
     },
     removeItem: (state, action) => {

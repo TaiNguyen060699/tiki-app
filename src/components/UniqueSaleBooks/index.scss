@@ -2,6 +2,23 @@
   background: #fcf4dd;
   padding: 16px 0;
 
+  &__filter {
+    text-align: center;
+
+    input {
+      line-height: 2;
+      font-size: 18px;
+      height: auto;
+      padding-left: 20px;
+      border: none;
+      width: 30%;
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
   .unique-book {
     padding-right: 0;
   }
