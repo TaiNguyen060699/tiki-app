@@ -1,4 +1,4 @@
-import { React, useState, useEffect, useRef } from "react";
+import { React, useState, useEffect } from "react";
 import Sale from "../../assets/images/sale.png";
 import "./index.scss";
 import Tiki from "../../assets/images/card-item/tiki.png";
